@@ -22,7 +22,6 @@ def change_contact(args, contacts):
         return "Contact not found"
 
 def show_phone(name, contacts):
-    print(name)
     if name in contacts:
         return contacts[name]
     else:
@@ -54,7 +53,7 @@ def main():
         elif command == 'change':
             print(change_contact(args, contacts))
         
-        elif command == 'show':
+        elif command == 'phone':
             if contacts:
                 print(show_phone(args[0], contacts))
             else:
@@ -66,8 +65,7 @@ def main():
             else:
                 print('Contacts is empty')
         else:
-            print('Invalid command.') 
-
+            print('Invalid command.')
 
 
 if __name__=="__main__":
