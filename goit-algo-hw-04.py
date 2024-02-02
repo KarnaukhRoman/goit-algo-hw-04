@@ -2,7 +2,7 @@
 def total_salary(path):
     total_sum = 0
     try:
-        with open(path, 'r') as salary_file:
+        with open(path, 'r', encoding='utf-8') as salary_file:
             lines = [el.strip().split(',') for el in salary_file.readlines()]
             for i in lines:
                 total_sum+=int(i[1])
@@ -19,7 +19,7 @@ def get_cats_info(path):
      keys_list = ["id", "name", "age"]
      list_cats = []
      try:
-          with open(path, 'r') as file_cats:
+          with open(path, 'r', encoding='utf-8') as file_cats:
                lines = [el.strip().split(',') for el in file_cats.readlines()]
                for i in lines:
                   list_cats.append(dict(zip(keys_list, i)))  
