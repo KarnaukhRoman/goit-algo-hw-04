@@ -1,5 +1,4 @@
 
-
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
@@ -49,10 +48,8 @@ def main():
 
         elif command == 'add':
             print(add_contact(args, contacts))
-        
         elif command == 'change':
             print(change_contact(args, contacts))
-        
         elif command == 'phone':
             if contacts:
                 print(show_phone(args[0], contacts))
