@@ -1,30 +1,41 @@
+def input_error(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except ValueError:
+            return "Give me name and phone please."
+        except KeyError:
+            return "Contact not exist"
+        except IndexError:
+            return "Contact not found"
+
+    return inner
 
 def parse_input(user_input):
     cmd, *args = user_input.split()
     cmd = cmd.strip().lower()
     return cmd, *args
 
+@input_error
 def add_contact(args, contacts):
     name, phone = args
-    if name in contacts:
-        return "Contact already exists"
-    else:
-        contacts[name] = phone
-        return "Contact added."
+    contacts[name]=phone
+    return "Contact added successfully"
 
+@input_error
 def change_contact(args, contacts):
-    name, phone = args
-    if name in contacts:
-        contacts[name] = phone
-        return "Contact successfully changed"
+    if args[0] in contacts.keys():
+        add_contact(args, contacts)
     else:
-        return "Contact not found"
+        raise(KeyError)
+    return "Contact successfully changed"
 
+@input_error
 def show_phone(name, contacts):
     if name in contacts:
         return contacts[name]
     else:
-        return "Contact not found"
+        raise(IndexError)
 
 def show_all(contacts):
     all_contacts = ''
